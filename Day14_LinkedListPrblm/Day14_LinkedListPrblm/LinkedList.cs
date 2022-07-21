@@ -37,31 +37,45 @@ namespace Day14_LinkedListPrblm
                 temp = temp.next; 
             }
         }
-
-        public Node RemoveFirstNode()
+        public Node RemovaLastNode()
         {
-            if (this.head == null)
+            if (head == null)
                 return null;
-            this.head = this.head.next;
-            return this.head;
-        }
-
-        internal Node InsertAtParticularPosition(int PreviousData, Node Newdata)
-        {
-            Node temp = this.head;
-            while (temp != null) //
+            if (head.next == null)
+                return null;
+            Node newNode = head;
+            while (newNode.next.next != null)
             {
-                while (temp.data == PreviousData)
-                {
-                    Node newnode = temp.next;
-                    temp.next = Newdata;
-                    temp.next.next = newnode;
-
-                    break;
-                }
-                temp = temp.next;
+                newNode = newNode.next;
             }
+            newNode.next = null;
             return head;
         }
+
+        //public Node RemoveFirstNode()
+        //{
+        //    if (this.head == null)
+        //        return null;
+        //    this.head = this.head.next;
+        //    return this.head;
+        //}
+
+        //public Node InsertAtParticularPosition(int PreviousData, Node Newdata)
+        //{
+        //    Node temp = this.head;
+        //    while (temp != null) //
+        //    {
+        //        while (temp.data == PreviousData)
+        //        {
+        //            Node newnode = temp.next;
+        //            temp.next = Newdata;
+        //            temp.next.next = newnode;
+
+        //            break;
+        //        }
+        //        temp = temp.next;
+        //    }
+        //    return head;
+        //}
     }
 }
