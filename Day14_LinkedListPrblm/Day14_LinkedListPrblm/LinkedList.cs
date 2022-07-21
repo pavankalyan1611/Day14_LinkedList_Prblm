@@ -9,7 +9,6 @@ namespace Day14_LinkedListPrblm
     public class LinkedList
     {
         public Node head;
-
         public void Add(int data)
         {
             Node node = new Node(data);
@@ -37,7 +36,23 @@ namespace Day14_LinkedListPrblm
                 Console.Write(temp.data + "->");
                 temp = temp.next; 
             }
+        }
+        internal Node InsertAtParticularPosition(int PreviousData, Node Newdata)
+        {
+            Node temp = this.head;
+            while (temp != null) //
+            {
+                while (temp.data == PreviousData)
+                {
+                    Node newnode = temp.next;
+                    temp.next = Newdata;
+                    temp.next.next = newnode;
 
+                    break;
+                }
+                temp = temp.next;
+            }
+            return head;
         }
     }
 }
