@@ -21,7 +21,7 @@ namespace Day14_LinkedListPrblm
                     temp = temp.next;
                 temp.next = node;
             }
-            //Console.WriteLine("{0} inserted into the linked list", node.data);
+            Console.WriteLine("{0} inserted into the linked list", node.data);
         }
         public void Display()
         {
@@ -37,18 +37,21 @@ namespace Day14_LinkedListPrblm
                 temp = temp.next; 
             }
         }
-
-        internal string Search(int value)
+        internal Node InsertAtParticularPosition(int PreviousData, Node Newdata)
         {
-            while (this.head != null)
+            Node temp = this.head;
+            while (temp != null) 
             {
-                if (this.head.data == value)
+                while (temp.data == PreviousData)
                 {
-                   return $"the given data {value} is Presrent in Linked List";                   
+                    Node newnode = temp.next;
+                    temp.next = Newdata;
+                    temp.next.next = newnode;
+                    break;
                 }
-                this.head = this.head.next;
+                temp = temp.next;
             }
-            return $"the given data {value} is Not Presrent in Linked List";
-        }      
+            return head;
+        }
     }
 }
