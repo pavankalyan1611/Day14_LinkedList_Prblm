@@ -21,7 +21,7 @@ namespace Day14_LinkedListPrblm
                     temp = temp.next;
                 temp.next = node;
             }
-            Console.WriteLine("{0} inserted into the linked list", node.data);
+            //Console.WriteLine("{0} inserted into the linked list", node.data);
         }
         public void Display()
         {
@@ -37,45 +37,18 @@ namespace Day14_LinkedListPrblm
                 temp = temp.next; 
             }
         }
-        public Node RemovaLastNode()
+
+        internal string Search(int value)
         {
-            if (head == null)
-                return null;
-            if (head.next == null)
-                return null;
-            Node newNode = head;
-            while (newNode.next.next != null)
+            while (this.head != null)
             {
-                newNode = newNode.next;
+                if (this.head.data == value)
+                {
+                   return $"the given data {value} is Presrent in Linked List";                   
+                }
+                this.head = this.head.next;
             }
-            newNode.next = null;
-            return head;
-        }
-
-        //public Node RemoveFirstNode()
-        //{
-        //    if (this.head == null)
-        //        return null;
-        //    this.head = this.head.next;
-        //    return this.head;
-        //}
-
-        //public Node InsertAtParticularPosition(int PreviousData, Node Newdata)
-        //{
-        //    Node temp = this.head;
-        //    while (temp != null) //
-        //    {
-        //        while (temp.data == PreviousData)
-        //        {
-        //            Node newnode = temp.next;
-        //            temp.next = Newdata;
-        //            temp.next.next = newnode;
-
-        //            break;
-        //        }
-        //        temp = temp.next;
-        //    }
-        //    return head;
-        //}
+            return $"the given data {value} is Not Presrent in Linked List";
+        }      
     }
 }
